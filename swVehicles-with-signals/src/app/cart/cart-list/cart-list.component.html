@@ -4,23 +4,28 @@
   </div>
 
   <div class="card-body">
-    <div *ngIf="cartItems().length; else noItems">
-      <div class="row">
-        <div class="col-md-2 fw-bold">Product</div>
-        <div class="col-md-2 fw-bold">Class</div>
-        <div class="col-md-2 fw-bold text-center">Price (credits)</div>
-        <div class="col-md-2 fw-bold text-center">Quantity</div>
-        <div class="col-md-2 fw-bold text-end">Extended Price</div>
-      </div>
+    @if (cartItems().length) {
+      <div>
+        <div class="row">
+          <div class="col-md-2 fw-bold">Product</div>
+          <div class="col-md-2 fw-bold">Class</div>
+          <div class="col-md-2 fw-bold text-center">Price (credits)</div>
+          <div class="col-md-2 fw-bold text-center">Quantity</div>
+          <div class="col-md-2 fw-bold text-end">Extended Price</div>
+        </div>
 
-      <!-- Display the cart items -->
-      <div *ngFor="let item of cartItems()">
-        <sw-cart-item [item]='item' />
+        <!-- Display the cart items -->
+        @for (item of cartItems(); track item.vehicle.name) {
+          <div>
+            <swv-cart-item [item]='item'/>
+          </div>
+        }
       </div>
-    </div>
+    } @else {
+      <div>
+        No items in cart
+      </div>
+    }
   </div>
 
-  <ng-template #noItems>
-    No items in cart
-  </ng-template>
 </div>

@@ -1,5 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
+import { toSignal, toObservable } from '@angular/core/rxjs-interop';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
   catchError,
   filter,
@@ -10,7 +11,7 @@ import {
   switchMap,
   throwError
 } from 'rxjs';
-import { toSignal, toObservable } from '@angular/core/rxjs-interop';
+
 import { Film, Vehicle, VehicleResponse } from './vehicle';
 
 @Injectable({
@@ -37,9 +38,9 @@ export class VehicleService {
   );
 
   // Expose signals from this service
-  vehicles = toSignal(this.vehicles$, {initialValue: [] as Vehicle[]});
+  vehicles = toSignal(this.vehicles$, {initialValue: []});
   selectedVehicle = signal<Vehicle | undefined>(undefined);
-  
+
   private vehicleFilms$ = toObservable(this.selectedVehicle).pipe(
     filter(Boolean),
     switchMap(vehicle =>
@@ -47,16 +48,13 @@ export class VehicleService {
         this.http.get<Film>(link)))
     )
   );
-  vehicleFilms = toSignal<Film[], Film[]>(this.vehicleFilms$, {initialValue: []});
+  vehicleFilms = toSignal(this.vehicleFilms$, {initialValue: []});
 
   vehicleSelected(vehicleName: string) {
     const foundVehicle = this.vehicles().find((v) => v.name === vehicleName);
     this.selectedVehicle.set(foundVehicle);
   }
 
-  constructor() {
-    
-  }
   private handleError(err: HttpErrorResponse): Observable<never> {
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console
@@ -68,7 +66,7 @@ export class VehicleService {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
       errorMessage = `Server returned code: ${err.status}, error message is: ${err.message
-        }`;
+      }`;
     }
     console.error(errorMessage);
     return throwError(() => errorMessage);

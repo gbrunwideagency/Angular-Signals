@@ -1,13 +1,14 @@
 import { Component, computed, inject } from '@angular/core';
-import { DecimalPipe, NgFor, NgIf } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
+
 import { Vehicle } from '../vehicle';
 import { VehicleService } from '../vehicle.service';
 import { CartService } from '../../cart/cart.service';
 
 @Component({
-  selector: 'sw-vehicle-detail',
+  selector: 'swv-vehicle-detail',
   standalone: true,
-  imports: [NgFor, NgIf, DecimalPipe],
+  imports: [DecimalPipe],
   templateUrl: './vehicle-detail.component.html'
 })
 export class VehicleDetailComponent {

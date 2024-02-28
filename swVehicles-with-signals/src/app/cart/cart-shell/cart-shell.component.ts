@@ -8,11 +8,11 @@ import { CartTotalComponent } from "../cart-total/cart-total.component";
   imports: [CartListComponent, CartTotalComponent],
   template: `
     <div class='row'>
-      <sw-cart-list/>
+      <swv-cart-list/>
     </div>
     <div class='row'>
       <div class='offset-md-6 col-md-6'>
-        <sw-cart-total/>
+        <swv-cart-total/>
       </div>
     </div>
   `

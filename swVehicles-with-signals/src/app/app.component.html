@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-light bg-light">
-  <a class="navbar-brand">{{pageTitle}}</a>
+  <a class="navbar-brand">{{ pageTitle }}</a>
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link"
@@ -17,8 +17,9 @@
          [routerLink]="['/cart']"
          routerLinkActive="active"
          [routerLinkActiveOptions]="{ exact : true}">Cart
-        <span class="badge bg-primary"
-              *ngIf="cartCount()">{{cartCount()}}</span>
+        @if (cartCount()) {
+          <span class="badge bg-primary">{{ cartCount() }}</span>
+        }
       </a>
     </li>
   </ul>

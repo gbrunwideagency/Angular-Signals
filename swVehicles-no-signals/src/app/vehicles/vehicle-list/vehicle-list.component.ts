@@ -1,19 +1,19 @@
 import { Component, inject } from '@angular/core';
-import { NgFor, NgClass, NgIf, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 import { EMPTY, catchError } from 'rxjs';
 import { VehicleService } from '../vehicle.service';
 
 @Component({
   selector: 'sw-vehicle-list',
   standalone: true,
-  imports: [AsyncPipe, NgClass, NgFor, NgIf],
+  imports: [AsyncPipe, NgClass],
   templateUrl: './vehicle-list.component.html'
 })
 export class VehicleListComponent {
   pageTitle = 'Vehicles';
   errorMessage = '';
   vehicleService = inject(VehicleService);
- 
+
   // Vehicles
   vehicles$ = this.vehicleService.vehicles$
     .pipe(

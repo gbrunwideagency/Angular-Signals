@@ -1,4 +1,5 @@
 import { Injectable, computed, signal } from "@angular/core";
+
 import { Vehicle } from "../vehicles/vehicle";
 import { CartItem } from "./cart";
 
