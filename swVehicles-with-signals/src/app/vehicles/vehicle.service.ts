@@ -18,7 +18,7 @@ import { Film, Vehicle, VehicleResponse } from './vehicle';
   providedIn: 'root'
 })
 export class VehicleService {
-  private url = 'https://swapi.py4e.com/api/vehicles';
+  private url = 'https://swapi.py4e.com/api/vehicles/';
   http = inject(HttpClient);
 
   // First page of vehicles
