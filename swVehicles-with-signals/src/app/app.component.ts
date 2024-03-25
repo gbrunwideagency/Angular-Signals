@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { CartService } from './cart/cart.service';
+import { environment } from "../environments/environment";
 
 @Component({
   selector: 'swv-root',
@@ -17,4 +18,5 @@ export class AppComponent {
 
   cartCount = computed(() => this.cartService.cartItems().reduce(
     (acc, item) => acc + item.quantity, 0));
+  protected readonly environment = environment;
 }
