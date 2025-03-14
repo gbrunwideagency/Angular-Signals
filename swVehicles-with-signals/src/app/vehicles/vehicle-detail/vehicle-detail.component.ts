@@ -6,10 +6,9 @@ import { VehicleService } from '../vehicle.service';
 import { CartService } from '../../cart/cart.service';
 
 @Component({
-  selector: 'swv-vehicle-detail',
-  standalone: true,
-  imports: [DecimalPipe],
-  templateUrl: './vehicle-detail.component.html'
+    selector: 'swv-vehicle-detail',
+    imports: [DecimalPipe],
+    templateUrl: './vehicle-detail.component.html'
 })
 export class VehicleDetailComponent {
   errorMessage = '';

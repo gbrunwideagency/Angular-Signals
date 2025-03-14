@@ -6,11 +6,10 @@ import { CartService } from './cart/cart.service';
 import { environment } from "../environments/environment";
 
 @Component({
-  selector: 'swv-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'swv-root',
+    imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   pageTitle = 'Star Wars Vehicle Sales';

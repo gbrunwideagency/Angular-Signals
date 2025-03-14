@@ -4,10 +4,9 @@ import { NgClass } from '@angular/common';
 import { VehicleService } from '../vehicle.service';
 
 @Component({
-  selector: 'swv-vehicle-list',
-  standalone: true,
-  imports: [NgClass],
-  templateUrl: './vehicle-list.component.html'
+    selector: 'swv-vehicle-list',
+    imports: [NgClass],
+    templateUrl: './vehicle-list.component.html'
 })
 export class VehicleListComponent {
   pageTitle = 'Vehicles';
